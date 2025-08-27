@@ -4,15 +4,31 @@
   plugins = {
     conform-nvim.settings = {
       formatters_by_ft = {
-        javascript = [ "eslint_d" ];
-        javascriptreact = [ "eslint_d" ];
-        typescript = [ "eslint_d" ];
-        typescriptreact = [ "eslint_d" ];
-        svelte = [ "eslint_d" ];
+        javascript = [
+          "biome"
+          # "eslint_d"
+        ];
+        javascriptreact = [
+          "biome"
+          # "eslint_d"
+        ];
+        typescript = [
+          "biome"
+          # "eslint_d"
+        ];
+        typescriptreact = [
+          "biome"
+          # "eslint_d"
+        ];
+        svelte = [
+          "biome"
+          # "eslint_d"
+        ];
       };
 
-      formatters.eslint_d = {
-        command = lib.getExe pkgs.eslint_d;
+      formatters = {
+        # eslint_d.command = lib.getExe pkgs.eslint_d;
+        biome.command = lib.getExe pkgs.biome;
       };
     };
 
@@ -78,6 +94,7 @@
   };
 
   extraPackages = with pkgs; [
-    eslint_d
+    # eslint_d
+    biome
   ];
 }
