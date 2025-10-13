@@ -41,11 +41,11 @@
     };
   };
 
-  extraPackages = with pkgs; [
-    rust-analyzer
-    clippy
-    rustfmt
-    rustc
-    cargo
-  ];
+  # extraPackages = with pkgs; [
+  # rust-analyzer
+  # clippy
+  # rustfmt
+  # rustc
+  # cargo
+  # ];
 }
