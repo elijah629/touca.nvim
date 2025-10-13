@@ -2,53 +2,47 @@
 {
   plugins.neo-tree = {
     enable = true;
-    closeIfLastWindow = true;
 
-    sources = [
-      "filesystem"
-      "buffers"
-      "git_status"
-      "document_symbols"
-    ];
+    settings = {
+      close_if_last_window = true;
 
-    popupBorderStyle = "rounded"; # “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
+      sources = [
+        "filesystem"
+        "buffers"
+        "git_status"
+        "document_symbols"
+      ];
 
-    filesystem = {
-      bindToCwd = false;
-      useLibuvFileWatcher = true;
-      followCurrentFile.enabled = true;
-    };
+      popup_border_style = "rounded"; # “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
 
-    extraOptions = {
       filesystem = {
+        bind_to_cwd = false;
+        use_libuv_file_watcher = true;
+        follow_current_file.enabled = true;
+
         filtered_items = {
           visible = true;
           hide_dotfiles = true;
           hide_gitignored = true;
-
           never_show = [ ];
         };
       };
-    };
 
-    defaultComponentConfigs = {
-      gitStatus = {
-        symbols = {
-          added = icons.git.LineAdded;
-          conflict = icons.git.FileConflict;
-          deleted = icons.git.FileDeleted;
-          ignored = icons.git.FileIgnored;
-          modified = icons.git.LineModified;
-          renamed = icons.git.FileRenamed;
-          staged = icons.git.FileStaged;
-          unstaged = icons.git.FileUnstaged;
-          untracked = icons.git.FileUntracked;
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added = icons.git.LineAdded;
+            conflict = icons.git.FileConflict;
+            deleted = icons.git.FileDeleted;
+            ignored = icons.git.FileIgnored;
+            modified = icons.git.LineModified;
+            renamed = icons.git.FileRenamed;
+            staged = icons.git.FileStaged;
+            unstaged = icons.git.FileUnstaged;
+            untracked = icons.git.FileUntracked;
+          };
         };
       };
-    };
-
-    window.mappings = {
-      "<space>" = "none";
     };
   };
 
