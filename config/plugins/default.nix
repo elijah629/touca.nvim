@@ -12,7 +12,7 @@
 
     ./wakatime.nix
 
-   # ./lualine.nix
+    ./lualine.nix
     ./bufferline.nix
 
     ./which-key.nix
