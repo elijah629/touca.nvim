@@ -1,26 +1,11 @@
-{ icons, lib, ... }:
+{ icons, ... }:
 {
-  autoCmd = [
-    {
-      event = "User";
-      pattern = "AlphaReady";
-      desc = "Open neo-tree after alpha is ready on startup";
-      callback = lib.nixvim.mkRaw ''
-        function()
-          if vim.fn.argc() == 0 and not vim.g.started_with_stdin then
-            vim.cmd("Neotree show")
-          end
-        end
-      '';
-    }
-  ];
-
   plugins.neo-tree = {
     enable = true;
-    lazyLoad.settings.cmd = "Neotree";
 
     settings = {
       close_if_last_window = true;
+      log_to_file = false;
 
       sources = [
         "filesystem"

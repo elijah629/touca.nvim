@@ -2,10 +2,7 @@
   plugins = {
     bufferline = {
       enable = true;
-      lazyLoad.settings.event = [
-        "BufReadPost"
-        "BufNewFile"
-      ];
+      lazyLoad.settings.event = "UIEnter";
       settings = {
         highlights = {
           background = {

@@ -5,6 +5,21 @@
       enable = true;
       lazyLoad.settings.cmd = "Telescope";
 
+      settings = {
+        defaults = {
+          layout_config.prompt_position = "top";
+          layout_strategy = "horizontal";
+          prompt_prefix = " ";
+          selection_caret = " ";
+          sorting_strategy = "ascending";
+          winblend = 0;
+        };
+
+        pickers.find_files = {
+          hidden = true;
+        };
+      };
+
       extensions = {
         fzf-native.enable = true;
       };
@@ -15,7 +30,7 @@
           options.desc = "View Todo";
         };
         "<leader><space>" = {
-          action = "find_files hidden=true";
+          action = "find_files";
           options.desc = "Find project files";
         };
         "<leader>ff" = {

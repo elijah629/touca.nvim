@@ -10,6 +10,18 @@
 
     settings = {
       options = {
+        disabled_filetypes = {
+          statusline = [
+            "alpha"
+            "dashboard"
+            "neo-tree"
+          ];
+          winbar = [
+            "alpha"
+            "dashboard"
+            "neo-tree"
+          ];
+        };
         globalstatus = true;
       };
 

@@ -75,7 +75,7 @@
             "cmp.entry.get_documentation" = true;
           };
 
-          progress.enabled = true;
+          progress.enabled = false;
           # signature.enabled = !config.plugins.lsp-signature.enable;
         };
 

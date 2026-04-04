@@ -8,179 +8,86 @@
             type = "padding";
             inherit val;
           };
+          button =
+            shortcut: label: command:
+            {
+              type = "button";
+              val = label;
+              on_press.__raw = "function() vim.cmd([[${command}]]) end";
+              opts = {
+                keymap = [
+                  "n"
+                  shortcut
+                  "<cmd>${command}<CR>"
+                  {
+                    noremap = true;
+                    silent = true;
+                    nowait = true;
+                  }
+                ];
+                inherit shortcut;
+                position = "center";
+                cursor = 3;
+                width = 42;
+                align_shortcut = "right";
+                hl_shortcut = "Keyword";
+              };
+            };
         in
         [
-        (padding 4)
-        {
-          opts = {
-            hl = "AlphaHeader";
-            position = "center";
-          };
-          type = "text";
-          val = [
-            "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░"
-            "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░"
-            "░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░"
-            "░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░"
-            "░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░"
-            "░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░"
-            "░░░░░░░░░░░░░▐░░░░▐███████████▄░░░"
-            "░░░░░le░░░░░░░▐░░░░▐█████████████▄"
-            "░░░░toucan░░░░░░▀▄░░░▐█████████████▄ "
-            "░░░░░░has░░░░░░░░▀▄▄███████████████ "
-            "░░░░░arrived░░░░░░░░░░░░█▀██████░░"
-          ];
-        }
-        (padding 6)
-        {
-          type = "button";
-          val = "  Find File";
-          on_press.__raw = "function() vim.cmd('Telescope find_files hidden=true') end";
-          opts = {
-            keymap = [
-              "n"
-              "f"
-              ":Telescope find_files <CR>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
+          (padding 4)
+          {
+            opts = {
+              hl = "AlphaHeader";
+              position = "center";
+            };
+            type = "text";
+            val = [
+              "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░"
+              "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░"
+              "░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░"
+              "░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░"
+              "░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░"
+              "░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░"
+              "░░░░░░░░░░░░░▐░░░░▐███████████▄░░░"
+              "░░░░░le░░░░░░░▐░░░░▐█████████████▄"
+              "░░░░toucan░░░░░░▀▄░░░▐█████████████▄ "
+              "░░░░░░has░░░░░░░░▀▄▄███████████████ "
+              "░░░░░arrived░░░░░░░░░░░░█▀██████░░"
             ];
-            shortcut = "f";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
-        (padding 1)
-        {
-          type = "button";
-          val = "  New File";
-          on_press.__raw = "function() vim.cmd[[ene]] end";
-          opts = {
-            keymap = [
-              "n"
-              "n"
-              ":ene <BAR> startinsert <CR>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
-            ];
-            shortcut = "n";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
-        (padding 1)
-        {
-          type = "button";
-          val = "󰈚  Recent Files";
-          on_press.__raw = "function() vim.cmd('Telescope oldfiles') end";
-          opts = {
-            keymap = [
-              "n"
-              "r"
-              ":Telescope oldfiles <CR>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
-            ];
-            shortcut = "r";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
-        (padding 1)
-        {
-          type = "button";
-          val = "󰈭  Find Word";
-          on_press.__raw = "function() vim.cmd('Telescope live_grep') end";
-          opts = {
-            keymap = [
-              "n"
-              "g"
-              ":Telescope live_grep <CR>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
-            ];
-            shortcut = "g";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
-        (padding 1)
-        {
-          type = "button";
-          val = "  Restore Session";
-          on_press.__raw = "function() require('persistence').load() end";
-          opts = {
-            keymap = [
-              "n"
-              "s"
-              ":lua require('persistence').load()<cr>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
-            ];
-            shortcut = "s";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
-        (padding 1)
-        {
-          type = "button";
-          val = "  Quit Neovim";
-          on_press.__raw = "function() vim.cmd[[qa]] end";
-          opts = {
-            keymap = [
-              "n"
-              "q"
-              ":qa<CR>"
-              {
-                noremap = true;
-                silent = true;
-                nowait = true;
-              }
-            ];
-            shortcut = "q";
-
-            position = "center";
-            cursor = 3;
-            width = 40;
-            align_shortcut = "right";
-            hl_shortcut = "Keyword";
-          };
-        }
+          }
+          (padding 2)
+          {
+            opts = {
+              hl = "Comment";
+              position = "center";
+            };
+            type = "text";
+            val = "search, edit, and get out of the way";
+          }
+          (padding 4)
+          (button "f" "  Find File" "Telescope find_files")
+          (padding 1)
+          (button "e" "  File Explorer" "Neotree show")
+          (padding 1)
+          (button "n" "  New File" "ene | startinsert")
+          (padding 1)
+          (button "r" "  Recent Files" "Telescope oldfiles")
+          (padding 1)
+          (button "g" "  Find Text" "Telescope live_grep")
+          (padding 1)
+          (button "s" "  Restore Session" "lua require('persistence').load()")
+          (padding 1)
+          (button "q" "  Quit Neovim" "qa")
+          (padding 3)
+          {
+            opts = {
+              hl = "Comment";
+              position = "center";
+            };
+            type = "text";
+            val = "leader is <Space>";
+          }
         ];
     };
 
