@@ -2,8 +2,9 @@
 {
   autoCmd = [
     {
-      event = "VimEnter";
-      desc = "Open neo-tree on startup when no file arguments were provided";
+      event = "User";
+      pattern = "AlphaReady";
+      desc = "Open neo-tree after alpha is ready on startup";
       callback = lib.nixvim.mkRaw ''
         function()
           if vim.fn.argc() == 0 and not vim.g.started_with_stdin then
