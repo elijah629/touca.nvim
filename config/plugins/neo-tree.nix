@@ -1,5 +1,19 @@
-{ icons, ... }:
+{ icons, lib, ... }:
 {
+  autoCmd = [
+    {
+      event = "VimEnter";
+      desc = "Open neo-tree on startup when no file arguments were provided";
+      callback = lib.nixvim.mkRaw ''
+        function()
+          if vim.fn.argc() == 0 and not vim.g.started_with_stdin then
+            vim.cmd("Neotree show")
+          end
+        end
+      '';
+    }
+  ];
+
   plugins.neo-tree = {
     enable = true;
     lazyLoad.settings.cmd = "Neotree";
