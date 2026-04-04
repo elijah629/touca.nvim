@@ -11,10 +11,10 @@
       lazyLoad.settings.ft = "nix";
     };
 
-    hmts = {
-      enable = true;
-      lazyLoad.settings.ft = "nix";
-    };
+    #     hmts = {
+    #       enable = true;
+    #       lazyLoad.settings.ft = "nix";
+    # };
 
     nix-develop = {
       enable = true;

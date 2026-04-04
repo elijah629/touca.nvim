@@ -8,7 +8,7 @@
       };
       progress = {
         display = {
-                  priority = 30; # Ordering priority for LSP notification group
+          priority = 30; # Ordering priority for LSP notification group
           overrides = {
             rust_analyzer = {
               name = "rust-analyzer";
