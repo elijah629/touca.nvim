@@ -1,9 +1,13 @@
 {
   plugins = {
-    notify.enable = true;
+    notify = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
 
     noice = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
 
       settings = {
         # Hides the title above noice boxes

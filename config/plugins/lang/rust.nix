@@ -9,6 +9,7 @@
 
     rustaceanvim = {
       enable = true;
+      lazyLoad.settings.ft = "rust";
 
       settings = {
         server = {

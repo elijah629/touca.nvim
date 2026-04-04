@@ -20,8 +20,7 @@
     };
     lint.enable = true;
 
-    lsp-signature.enable = true;
-    lsp-lines.enable = true;
+    lsp-lines.enable = false;
   };
 
   keymaps = [

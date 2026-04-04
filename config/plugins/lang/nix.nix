@@ -6,9 +6,20 @@
 }:
 {
   plugins = {
-    nix.enable = true;
-    hmts.enable = true;
-    nix-develop.enable = true;
+    nix = {
+      enable = true;
+      lazyLoad.settings.ft = "nix";
+    };
+
+    hmts = {
+      enable = true;
+      lazyLoad.settings.ft = "nix";
+    };
+
+    nix-develop = {
+      enable = true;
+      lazyLoad.settings.ft = "nix";
+    };
 
     conform-nvim.settings = {
       formatters_by_ft = {
@@ -16,7 +27,7 @@
       };
 
       formatters = {
-        nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
+        nixfmt.command = lib.getExe pkgs.nixfmt;
       };
     };
 
@@ -35,15 +46,15 @@
       settings =
         let
           flake = ''(builtins.getFlake "${self}")'';
-          system = ''''${builtins.currentSystem}'';
+          system = "\${builtins.currentSystem}";
         in
         {
           formatting = {
-            command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+            command = [ "${lib.getExe pkgs.nixfmt}" ];
           };
           nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
           options = {
-            nixvim.expr = ''${flake}.packages.${system}.nvim.options'';
+            nixvim.expr = "${flake}.packages.${system}.nvim.options";
           };
         };
     };

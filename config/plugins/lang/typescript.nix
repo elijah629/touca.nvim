@@ -34,6 +34,12 @@
 
     typescript-tools = {
       enable = true;
+      lazyLoad.settings.ft = [
+        "javascript"
+        "javascriptreact"
+        "typescript"
+        "typescriptreact"
+      ];
 
       settings = {
         settings = {
@@ -90,7 +96,19 @@
       };
     };
 
-    ts-autotag.enable = true;
+    ts-autotag = {
+      enable = true;
+      lazyLoad.settings.ft = [
+        "astro"
+        "html"
+        "javascriptreact"
+        "markdown"
+        "svelte"
+        "typescriptreact"
+        "vue"
+        "xml"
+      ];
+    };
   };
 
   extraPackages = with pkgs; [

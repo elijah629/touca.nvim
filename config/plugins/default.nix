@@ -1,38 +1,34 @@
 {
   imports = [
+    # Lazy loading provider
+    ./lz-n.nix
+
+    # Theme and startup UI
     ./tokyonight.nix
+    ./alpha.nix
 
+    # Core editing experience
     ./blink-cmp.nix
-
     ./mini.nix
-
-    ./toggleterm.nix
+    ./bufferline.nix
+    ./conform.nix
+    ./fidget.nix
+    ./gitsigns.nix
+    ./lsp.nix
+    ./lspsaga.nix
+    ./lualine.nix
     ./neo-tree.nix
     ./noice.nix
-
-    ./wakatime.nix
-
-    ./lualine.nix
-    ./bufferline.nix
-
+    ./telescope.nix
+    ./toggleterm.nix
+    ./treesitter.nix
+    ./ufo.nix
     ./which-key.nix
 
     # LSP and language specific config
     ./lang
-    ./lspsaga.nix
-    ./lsp.nix
-    ./conform.nix
-    ./treesitter.nix
 
-    ./telescope.nix
-    ./alpha.nix
-    ./fidget.nix
-
-    ./gitsigns.nix
-
-    ./ufo.nix
-
-    # Lazy loading support
-    ./lz-n.nix
+    # External services
+    ./wakatime.nix
   ];
 }

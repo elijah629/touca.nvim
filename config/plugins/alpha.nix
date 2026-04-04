@@ -1,14 +1,15 @@
 {
-  plugins.alpha = {
-    enable = true;
-    settings.layout =
-      let
-        padding = val: {
-          type = "padding";
-          inherit val;
-        };
-      in
-      [
+  plugins = {
+    alpha = {
+      enable = true;
+      settings.layout =
+        let
+          padding = val: {
+            type = "padding";
+            inherit val;
+          };
+        in
+        [
         (padding 4)
         {
           opts = {
@@ -34,7 +35,7 @@
         {
           type = "button";
           val = "  Find File";
-          on_press.raw = "require('telescope.builtin').find_files";
+          on_press.__raw = "function() vim.cmd('Telescope find_files hidden=true') end";
           opts = {
             keymap = [
               "n"
@@ -84,7 +85,7 @@
         {
           type = "button";
           val = "󰈚  Recent Files";
-          on_press.raw = "require('telescope.builtin').oldfiles";
+          on_press.__raw = "function() vim.cmd('Telescope oldfiles') end";
           opts = {
             keymap = [
               "n"
@@ -109,7 +110,7 @@
         {
           type = "button";
           val = "󰈭  Find Word";
-          on_press.raw = "require('telescope.builtin').live_grep";
+          on_press.__raw = "function() vim.cmd('Telescope live_grep') end";
           opts = {
             keymap = [
               "n"
@@ -134,7 +135,7 @@
         {
           type = "button";
           val = "  Restore Session";
-          on_press.raw = "require('persistence').load()";
+          on_press.__raw = "function() require('persistence').load() end";
           opts = {
             keymap = [
               "n"
@@ -180,6 +181,12 @@
             hl_shortcut = "Keyword";
           };
         }
-      ];
+        ];
+    };
+
+    persistence = {
+      enable = true;
+      settings.need = 0;
+    };
   };
 }

@@ -1,10 +1,11 @@
+{ icons, ... }:
 {
   config = {
     extraConfigLuaPre = ''
-      vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
-      vim.fn.sign_define("diagnosticsignwarn", { text = " ", texthl = "diagnosticwarn", linehl = "", numhl = "" })
-      vim.fn.sign_define("diagnosticsignhint", { text = "󰌵", texthl = "diagnostichint", linehl = "", numhl = "" })
-      vim.fn.sign_define("diagnosticsigninfo", { text = " ", texthl = "diagnosticinfo", linehl = "", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignError", { text = "${icons.diagnostics.BoldError}", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = "${icons.diagnostics.BoldWarning}", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignHint", { text = "${icons.diagnostics.BoldHint}", texthl = "DiagnosticSignHint", linehl = "", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = "${icons.diagnostics.BoldInformation}", texthl = "DiagnosticSignInfo", linehl = "", numhl = "" })
     '';
 
     # feature that enhances the way Neovim loads and executes Lua modules,
@@ -77,7 +78,7 @@
       # Enable the sign column to prevent the screen from jumping
       signcolumn = "yes";
 
-      # Reduce which-key timeout to 250s
+      # Reduce which-key timeout to 250ms
       timeoutlen = 250;
 
       scrolloff = 8; # Will never have less than 8 characters as you scroll down

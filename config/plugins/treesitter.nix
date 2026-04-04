@@ -13,7 +13,7 @@
         indent.enable = true;
 
         highlight = {
-          additional_vim_regex_highlighting = true;
+          additional_vim_regex_highlighting = false;
           enable = true;
         };
       };

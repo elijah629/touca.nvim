@@ -2,6 +2,7 @@
 {
   plugins.neo-tree = {
     enable = true;
+    lazyLoad.settings.cmd = "Neotree";
 
     settings = {
       close_if_last_window = true;

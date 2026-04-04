@@ -2,11 +2,12 @@
   plugins = {
     lspsaga = {
       enable = true;
+      lazyLoad.settings.cmd = "Lspsaga";
 
       settings = {
         ui.border = "rounded"; # One of none, single, double, rounded, solid, shadow
         hover = {
-          openCmd = "!firfox";
+          openCmd = "!librewolf";
           openLink = "gx";
         };
 
@@ -173,18 +174,18 @@
     {
       mode = "n";
       key = "[d";
-      action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
+      action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       options = {
-        desc = "Next Diagnostic";
+        desc = "Previous Diagnostic";
         silent = true;
       };
     }
     {
       mode = "n";
       key = "]d";
-      action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+      action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
       options = {
-        desc = "Previous Diagnostic";
+        desc = "Next Diagnostic";
         silent = true;
       };
     }

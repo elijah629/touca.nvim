@@ -2,6 +2,10 @@
   plugins = {
     bufferline = {
       enable = true;
+      lazyLoad.settings.event = [
+        "BufReadPost"
+        "BufNewFile"
+      ];
       settings = {
         highlights = {
           background = {
