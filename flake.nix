@@ -24,6 +24,19 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          # FIXME: Remove once nixvim is patched
+          overlays = [
+            (_final: prev: {
+              # nixvim's generated config is installed through Neovim's plugin
+              # pack, whose current nixpkgs implementation expects a pname.
+              runCommandLocal =
+                name: args: script:
+                let
+                  drv = prev.runCommandLocal name args script;
+                in
+                if name == "nvim-config" then drv // { pname = name; } else drv;
+            })
+          ];
         };
         nixvim' = nixvim.legacyPackages.${system};
         nixvimModule = {
