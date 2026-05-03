@@ -19,6 +19,7 @@
     ./lualine.nix
     ./neo-tree.nix
     ./noice.nix
+    ./snacks.nix
     ./telescope.nix
     ./toggleterm.nix
     ./treesitter.nix

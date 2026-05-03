@@ -15,17 +15,6 @@
       lazyLoad.settings.ft = "markdown";
     };
 
-    image = {
-      enable = lib.nixvim.enableExceptInTests;
-      lazyLoad.settings.ft = "markdown";
-      settings = {
-        integrations.markdown = {
-          clearInInsertMode = true;
-          onlyRenderImageAtCursor = true;
-        };
-      };
-    };
-
     markdown-preview = {
       enable = true;
       lazyLoad.settings.ft = "markdown";
