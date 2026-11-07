@@ -1,0 +1,51 @@
+name: Update flake
+
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC; stagger updates away from the start of the hour.
+    - cron: "47 8 * * 3"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-flake
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update inputs
+        run: nix flake update
+
+      - name: Validate and build before publishing
+        run: |
+          nix flake check --print-build-logs
+          nix build .#default --no-link --print-build-logs
+
+      - name: Commit tested updates
+        run: |
+          git add -- flake.lock
+          if git diff --cached --quiet; then
+            echo "All inputs are already up to date."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "chore: update flake inputs"
+          git push origin "HEAD:$DEFAULT_BRANCH"

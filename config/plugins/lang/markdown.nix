@@ -31,14 +31,15 @@
     lsp.servers = {
       marksman.enable = true;
 
-      ltex = {
+      ltex_plus = {
         enable = true;
+        package = pkgs.ltex-ls-plus;
         filetypes = [
           "markdown"
           "text"
         ];
 
-        settings.completionEnabled = true;
+        settings.ltex.completionEnabled = true;
 
         extraOptions = {
           checkFrequency = "save";
